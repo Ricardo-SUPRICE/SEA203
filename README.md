@@ -7,8 +7,11 @@
 Dans le cadre d'un project scolaire, j'ai crée ce programme qui a partir d'un fichier de configuration:
 
 -Lis un flux rss 
+
 -Prend les information importante de ce flux
+
 -Cree fichier avec du css et html avec info dedans
+
 -Affiche les informations importante dans un fichier dans une page web
 
 ## Installation
