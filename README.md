@@ -18,7 +18,6 @@ Dans le cadre d'un project scolaire, j'ai crée ce programme qui a partir d'un f
 
 Récuperé les programme via gitlab:
 
-A CHANGER faire avec pip
 ```
 apt insall git
 git clone https://etulab.univ-amu.fr/s23001073/sae-203.git
