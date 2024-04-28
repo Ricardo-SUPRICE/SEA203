@@ -229,7 +229,7 @@ def aggreg(chemin_fichier_conf):
 
 def main():
 
-    aggreg('/home/aggreg/aggreg.conf')#fichier de configuration de base
+    aggreg('/etc/aggreg/aggreg.conf')#fichier de configuration de base
     
 
         
