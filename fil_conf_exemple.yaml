@@ -1,0 +1,5 @@
+sources:
+  - http://serveur1
+rss-name: rss.xml
+destination: /home/ricardo/sae-203
+tri-chrono: true
