@@ -6,13 +6,11 @@
 
 Dans le cadre d'un project scolaire, j'ai crée ce programme qui a partir d'un fichier de configuration:
 
--Lis un flux rss 
+-Lis un flux rss grace a son url 
 
 -Prend les information importante de ce flux
 
--Cree fichier avec du css et html avec info dedans
-
--Affiche les informations importante dans un fichier dans une page web
+-Affiche les informations importante dans un fichier html avec son css 
 
 ## Installation
 
@@ -24,7 +22,7 @@ git clone https://etulab.univ-amu.fr/s23001073/sae-203.git
 ls sae-203
 ```
 
-## Parametrage
+## Paramétrage
 
 Crée un fichier de config dans /etc :
 
@@ -71,5 +69,5 @@ ou si il n'y a pas de de fichier dans /etc/aggreg/aggreg.conf
 
 ## FAQ
 
-reponse question a faire
+reponse question a faire resolation de probleme
 
