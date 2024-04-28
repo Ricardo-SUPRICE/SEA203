@@ -194,13 +194,19 @@ p{
 def aggreg(chemin_fichier_conf):
     
     try:
-        with open(chemin_fichier_conf,'r')as file_conf:#essaye le chemin classique du fichier config 
-            conf = yaml.safe_load(file_conf)
-            #print(conf)
-            liste_lien = conf["sources"]
-            print(liste_lien)
+        with open(sys.argv[1])as file_conf: #ouvre le fichier de conf
+                conf = yaml.safe_load(file_conf) #charge le fichier yaml
+                #print(conf)
+                liste_url = [] #lien avec les bon url pour aller a la page des flux rss
+                liste_lien = conf["sources"]#liste du fichier yaml
+                for i in liste_lien:
+                    i = i +'/'+str(conf["rss-name"])#ajoute au lien pour ciblé la page rss
+                    liste_url.append(i)
+                file_RSS = charge_urls(liste_url) #voir fonction charge_url
+                liste_evenements = fusion_flux(liste_url,file_RSS, conf["tri-chrono"])#voir fonction fusion_flux
+                genere_html(liste_evenements,conf["destination"])
 
-    except FileNotFoundError:#si il existe pas, regarde si il n'y a pas unu fichier mis en agrument
+    except FileNotFoundError:#si il existe pas, regarde si il n'y a pas un fichier mis en agrument
         try:
             with open(sys.argv[1])as file_conf: #ouvre le fichier de conf
                 conf = yaml.safe_load(file_conf) #charge le fichier yaml
