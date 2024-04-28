@@ -29,7 +29,7 @@ def charge_urls(liste_url):
         except ConnectionError:
             news_feed.append("None")
         except MissingSchema: #si l'URL ne commence pas par https://
-            print("URL pas bon ")
+            print("Error : URL pas bon -->",url)
             print("Doit commencer par https://")
         else:#sinon
             bozo = feedparser.parse(url)["bozo"] #voir si c'est un rss ou non
@@ -188,34 +188,43 @@ p{
         </article>
     </body>
     </html>""")
-    return     
+    return   #return 2 fichier (avec 1rep si non existe) 1 fichier html et 1fichier css
         
 
+def aggreg(chemin_fichier_conf):
+    
+    try:
+        with open(chemin_fichier_conf,'r')as file_conf:#essaye le chemin classique du fichier config 
+            conf = yaml.safe_load(file_conf)
+            #print(conf)
+            liste_lien = conf["sources"]
+            print(liste_lien)
 
+    except FileNotFoundError:#si il existe pas, regarde si il n'y a pas unu fichier mis en agrument
+        try:
+            with open(sys.argv[1])as file_conf: #ouvre le fichier de conf
+                conf = yaml.safe_load(file_conf) #charge le fichier yaml
+                #print(conf)
+                liste_url = [] #lien avec les bon url pour aller a la page des flux rss
+                liste_lien = conf["sources"]#liste du fichier yaml
+                for i in liste_lien:
+                    i = i +'/'+str(conf["rss-name"])#ajoute au lien pour ciblé la page rss
+                    liste_url.append(i)
+                file_RSS = charge_urls(liste_url) #voir fonction charge_url
+                liste_evenements = fusion_flux(liste_url,file_RSS, conf["tri-chrono"])#voir fonction fusion_flux
+                genere_html(liste_evenements,conf["destination"])
+        except IndexError: #si y'en a pas
+            print("Error: fichier config inexistant --> '/etc/aggreg/aggreg.conf' ")
+            print("Error : Aucun fichier mis en argument pour remplacé fichier config")
+
+    
+    return
 
 
 def main():
+
+    aggreg('/etc/aggreg/aggreg.conf')#fichier de configuration de base
     
-    
-    
-    liste_url = []
-    for i in range(1,len(sys.argv)):  #le module sys connais les argument dans un ligne
-        liste_url.append(sys.argv[i]) #prend tout argument
-
-    #Etape 1  
-    file_RSS = charge_urls(liste_url)
-
-    #Etape 2 
-    liste_evenements = fusion_flux(liste_url,file_RSS, True) #si dernier option = True alors ordre croissant si option = False ordre criticité CRITICAL > MAJOR > MINOR 
-    
-    #Etape 3
-    #genere_html(liste_evenements,"/var/www/aggreg")
-    genere_html(liste_evenements,"/home/ricardo/Documents/SAE203")
-
-
-
-    """with open("/etc/aggreg/aggreg.conf")as file_conf:
-        conf = yaml.safe_load"""
 
         
     
