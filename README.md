@@ -69,4 +69,7 @@ ou si il n'y a pas de de fichier dans /etc/aggreg/aggreg.conf
 ./aggreg.py <file_config>
 ```
 
+## FAQ
+
+reponse question a faire
 
