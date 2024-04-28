@@ -194,7 +194,7 @@ p{
 def aggreg(chemin_fichier_conf):
     
     try:
-        with open(sys.argv[1])as file_conf: #ouvre le fichier de conf
+        with open(chemin_fichier_conf,'r')as file_conf: #ouvre le fichier de conf
                 conf = yaml.safe_load(file_conf) #charge le fichier yaml
                 #print(conf)
                 liste_url = [] #lien avec les bon url pour aller a la page des flux rss
@@ -208,7 +208,7 @@ def aggreg(chemin_fichier_conf):
 
     except FileNotFoundError:#si il existe pas, regarde si il n'y a pas un fichier mis en agrument
         try:
-            with open(sys.argv[1])as file_conf: #ouvre le fichier de conf
+            with open(sys.argv[1],'r')as file_conf: #ouvre le fichier de conf
                 conf = yaml.safe_load(file_conf) #charge le fichier yaml
                 #print(conf)
                 liste_url = [] #lien avec les bon url pour aller a la page des flux rss
@@ -229,7 +229,7 @@ def aggreg(chemin_fichier_conf):
 
 def main():
 
-    aggreg('/etc/aggreg/aggreg.conf')#fichier de configuration de base
+    aggreg('/home/ricardo/sae-203/aggreg.conf')#fichier de configuration de base
     
 
         
