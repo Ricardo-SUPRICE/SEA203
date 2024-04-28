@@ -191,8 +191,11 @@ p{
     return   #return 2 fichier (avec 1rep si non existe) 1 fichier html et 1fichier css
         
 
-def aggreg(chemin_fichier_conf):
-    
+def main():
+    """
+    prend les information d'un fichier de configuration et applique des fonctions sur les donnée
+    """
+    chemin_fichier_conf = '/etc/aggreg/aggreg.conf'
     try:
         with open(chemin_fichier_conf,'r')as file_conf: #ouvre le fichier de conf
                 conf = yaml.safe_load(file_conf) #charge le fichier yaml
@@ -224,15 +227,7 @@ def aggreg(chemin_fichier_conf):
             print("Error : Aucun fichier mis en argument pour remplacé fichier config")
 
     
-    return
-
-
-def main():
-
-    aggreg('/etc/aggreg/aggreg.conf')#fichier de configuration de base
-    
-
-        
+ 
     
 if __name__ == '__main__':
     main() 
