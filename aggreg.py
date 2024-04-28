@@ -229,7 +229,7 @@ def aggreg(chemin_fichier_conf):
 
 def main():
 
-    aggreg('/home/ricardo/sae-203/aggreg.conf')#fichier de configuration de base
+    aggreg('/home/aggreg/aggreg.conf')#fichier de configuration de base
     
 
         
