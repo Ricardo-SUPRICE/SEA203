@@ -24,6 +24,14 @@ ls sae-203
 
 ## Paramétrage
 
+Tout d'abord téléchargé les packet yaml et feedparser: 
+```
+apt-get install python3
+apt install python3-pip
+pip3 install PyYAML
+pip3 install feedparser 
+```
+
 Crée un fichier de config dans /etc :
 
 ```
