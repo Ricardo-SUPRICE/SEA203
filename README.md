@@ -50,19 +50,20 @@ Dans le fichier config ecrire:
 #  - http://server2/rss.xml
 #  - url
 #  - ...
+
 #rss-name: rss.xml --> nom du fichier 
 
 #destination: /var/www/superviseur/index.html --> destinantion pour la création de la page web
 
 #tri-chrono: true --> pour trier:True = evenement les plus récent et False = evenement les plus critique
 
-
-sources:
-  - #url
-  - #url
-rss-name: #file_name
-destination: #path html
-tri-chrono: #True or False
+#Exemple:
+#sources:
+#  - #url
+#  - #url
+#rss-name: #file_name
+#destination: #path html
+#tri-chrono: #True or False
 
 ```
 
