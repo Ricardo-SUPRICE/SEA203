@@ -21,6 +21,8 @@ apt insall git
 git clone https://etulab.univ-amu.fr/s23001073/sae-203.git
 ls sae-203
 ```
+ou récupérer le fichier comprésser 
+
 
 ## Paramétrage
 
