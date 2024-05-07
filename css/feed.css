@@ -1,0 +1,23 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.flux_rss{
+    width:90%;
+    margin:auto;
+    border-left:1px;
+} 
+.date_gene{
+    margin-left:10px;
+} 
+p{
+    padding:10px;
+}  
+    .navbar {
+    background-color: #333; 
+    overflow: hidden;
+    padding:30px; 
+}                              

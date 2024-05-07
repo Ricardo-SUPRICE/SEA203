@@ -114,12 +114,6 @@ def genere_html(liste_evenements, chemin_html):
     padding: 0;
     box-sizing: border-box;
 }
-body>article>header>h1{
-    color: white;
-    background-color: #202020;
-    padding: 50px;
-    margin-bottom: 10px;
-}
 .flux_rss{
     width:90%;
     margin:auto;
@@ -130,7 +124,12 @@ body>article>header>h1{
 } 
 p{
     padding:10px;
-}                                
+}  
+    .navbar {
+    background-color: #333; 
+    overflow: hidden;
+    padding:30px; 
+}                              
 """)
     with open(chemin_html, "w")as html:#création fichier html
         date = datetime.datetime.now() #la date actuelle
@@ -144,10 +143,18 @@ p{
     <link rel="stylesheet" href="css/feed.css" type="text/css"/>
   </head>
   <body>
-    <article>
-      <header>
+    
+    <div class="navbar">
+                   <header>
         <h1>Events log</h1>
-      </header>
+    </header>
+    <a href="#home">Home</a>
+    <a href="#news">News</a>
+    <a href="#contact">Contact</a>
+    <a href="#about">About</a>
+    </div>
+    <article>
+      
                    
       <i><p class="date_gene">""")
         html.write(str(date))
