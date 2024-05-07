@@ -194,7 +194,9 @@ p{
 def main():
     """
     prend les information d'un fichier de configuration et applique des fonctions sur les donnée
+    si commande executer avec argument -h ou --help, donne de l'aide
     """
+
     chemin_fichier_conf = '/etc/aggreg/aggreg.conf'
     try:
         with open(chemin_fichier_conf,'r')as file_conf: #ouvre le fichier de conf
@@ -208,17 +210,21 @@ def main():
 
     except FileNotFoundError:#si il existe pas, regarde si il n'y a pas un fichier mis en agrument
         try:
-            with open(sys.argv[1],'r')as file_conf: #ouvre le fichier de conf
-                conf = yaml.safe_load(file_conf) #charge le fichier yaml
-                #print(conf)
-                #lien avec les bon url pour aller a la page des flux rss
-                liste_url = conf["sources"]#liste du fichier yaml
-                """for i in liste_lien:
-                    i = i +'/'+str(conf["rss-name"])#ajoute au lien pour ciblé la page rss
-                    liste_url.append(i)"""
-                file_RSS = charge_urls(liste_url) #voir fonction charge_url
-                liste_evenements = fusion_flux(liste_url,file_RSS, conf["tri-chrono"])#voir fonction fusion_flux
-                genere_html(liste_evenements,conf["destination"])
+            if sys.argv[1] == '-h' or sys.argv[1] == '--help':
+                print("compléter le fichier de configuration --> '/etc/aggreg/aggreg.conf'")
+                print("puis lacer la commande './aggreg.py' ")
+            else:
+                with open(sys.argv[1],'r')as file_conf: #ouvre le fichier de conf
+                    conf = yaml.safe_load(file_conf) #charge le fichier yaml
+                    #print(conf)
+                    #lien avec les bon url pour aller a la page des flux rss
+                    liste_url = conf["sources"]#liste du fichier yaml
+                    """for i in liste_lien:
+                        i = i +'/'+str(conf["rss-name"])#ajoute au lien pour ciblé la page rss
+                        liste_url.append(i)"""
+                    file_RSS = charge_urls(liste_url) #voir fonction charge_url
+                    liste_evenements = fusion_flux(liste_url,file_RSS, conf["tri-chrono"])#voir fonction fusion_flux
+                    genere_html(liste_evenements,conf["destination"])    
         except IndexError: #si y'en a pas
             print("Error: fichier config inexistant --> '/etc/aggreg/aggreg.conf' ")
             print("Error : Aucun fichier mis en argument pour remplacé fichier config")
