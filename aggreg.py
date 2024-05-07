@@ -101,7 +101,10 @@ def genere_html(liste_evenements, chemin_html):
     """
     dossier_css = chemin_html + '/css/'
     chemin_css = chemin_html + '/css/feed.css'
+    chemin_html_graphe = chemin_html + '/graphe.html'
     chemin_html = chemin_html + '/index.html'
+    
+
     try: 
         os.makedirs(dossier_css)
     except FileExistsError:
@@ -125,11 +128,19 @@ def genere_html(liste_evenements, chemin_html):
 p{
     padding:10px;
 }  
-    .navbar {
+.navbar {
     background-color: #333; 
-    overflow: hidden;
     padding:30px; 
-}                              
+    overflow: hidden;
+}      
+.navbar h1 {
+            float: left; 
+            margin: 0; 
+        }
+.navbar a {
+            float: right; 
+            margin: 0; 
+        }                                                       
 """)
     with open(chemin_html, "w")as html:#création fichier html
         date = datetime.datetime.now() #la date actuelle
@@ -145,13 +156,11 @@ p{
   <body>
     
     <div class="navbar">
-                   <header>
-        <h1>Events log</h1>
+    <header>
+    <h1>Events log</h1>
     </header>
-    <a href="#home">Home</a>
-    <a href="#news">News</a>
-    <a href="#contact">Contact</a>
-    <a href="#about">About</a>
+    <a href=""")
+        html.write(chemin_html_graphe+""">Graphe</a>
     </div>
     <article>
       
@@ -195,6 +204,10 @@ p{
         </article>
     </body>
     </html>""")
+            
+    with open(chemin_html_graphe,'w')as graphe:
+        graphe.write("""PAS ENCORE DISPONIBLE""")
+        
     return   #return 2 fichier (avec 1rep si non existe) 1 fichier html et 1fichier css
         
 
@@ -213,25 +226,35 @@ def main():
                 liste_url = conf["sources"]#liste du fichier yaml
                 file_RSS = charge_urls(liste_url) #voir fonction charge_url
                 liste_evenements = fusion_flux(liste_url,file_RSS, conf["tri-chrono"])#voir fonction fusion_flux
-                genere_html(liste_evenements,conf["destination"])
-
+                genere_html(liste_evenements,conf["destination"]) 
     except FileNotFoundError:#si il existe pas, regarde si il n'y a pas un fichier mis en agrument
         try:
-            if sys.argv[1] == '-h' or sys.argv[1] == '--help':
-                print("compléter le fichier de configuration --> '/etc/aggreg/aggreg.conf'")
-                print("puis lacer la commande './aggreg.py' ")
+            if sys.argv[1] == '-h' or sys.argv[1] == '--help':#si l'argument est -h ou --help
+                print(" Compléter le fichier de configuration --> '/etc/aggreg/aggreg.conf'")
+                print(" Puis lancer la commande './aggreg.py' \n")
+                print("(afficher fichier documentation aide sur le fichier(si grosse erreur verifier le fichier de configuration (lien,nom etc etc...)))\n")
+                print(" -h, --help  \t Guide, aide pour conmprendre l'outils. A LIRE !!")
+                print("(ou lire mon gitlab  --->  https://etulab.univ-amu.fr/s23001073/sae-203)")
             else:
-                with open(sys.argv[1],'r')as file_conf: #ouvre le fichier de conf
-                    conf = yaml.safe_load(file_conf) #charge le fichier yaml
-                    #print(conf)
-                    #lien avec les bon url pour aller a la page des flux rss
-                    liste_url = conf["sources"]#liste du fichier yaml
-                    """for i in liste_lien:
-                        i = i +'/'+str(conf["rss-name"])#ajoute au lien pour ciblé la page rss
-                        liste_url.append(i)"""
-                    file_RSS = charge_urls(liste_url) #voir fonction charge_url
-                    liste_evenements = fusion_flux(liste_url,file_RSS, conf["tri-chrono"])#voir fonction fusion_flux
-                    genere_html(liste_evenements,conf["destination"])    
+                try:
+                    with open(sys.argv[1],'r')as file_conf: #ouvre le fichier de conf
+                        conf = yaml.safe_load(file_conf) #charge le fichier yaml
+                        #print(conf)
+                        #lien avec les bon url pour aller a la page des flux rss
+                        liste_url = conf["sources"]#liste du fichier yaml
+                        """for i in liste_lien:
+                            i = i +'/'+str(conf["rss-name"])#ajoute au lien pour ciblé la page rss
+                            liste_url.append(i)"""
+                        file_RSS = charge_urls(liste_url) #voir fonction charge_url
+                        liste_evenements = fusion_flux(liste_url,file_RSS, conf["tri-chrono"])#voir fonction fusion_flux
+                        genere_html(liste_evenements,conf["destination"]) 
+                except FileNotFoundError:
+                    print(" Error : Fichier introuvable")
+                    print( " >>",sys.argv[1],"<<")
+                except yaml.scanner.ScannerError:#si c'est pas un fichier yaml en argument
+                    print(" Error: Ceci n'est PAS un fichier de config au format yaml")
+                except IsADirectoryError:#quand l'agument est un repertoire
+                    print(" Error : Ceci est un répertoire")
         except IndexError: #si y'en a pas
             print("Error: fichier config inexistant --> '/etc/aggreg/aggreg.conf' ")
             print("Error : Aucun fichier mis en argument pour remplacé fichier config")
