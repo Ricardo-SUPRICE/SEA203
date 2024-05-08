@@ -12,6 +12,8 @@ Dans le cadre d'un project scolaire, j'ai crée ce programme qui a partir d'un f
 
 -Affiche les informations importante dans un fichier html avec son css 
 
+PRESENTER LE PROJET DANS SON ENTIERETER (A FAIRE)
+
 ## Installation
 
 Récuperé les programme via gitlab:
@@ -78,7 +80,19 @@ ou si il n'y a pas de de fichier dans /etc/aggreg/aggreg.conf
 ./aggreg.py <file_config>
 ```
 
-## FAQ
+## Problèmes survenus ? 
+    
+Si un problème survient quand la commande est lancée, lire l’erreur et faire ce qu’il y a marqué dans l’erreur. 
 
-reponse question a faire resolation de probleme
+Si ce n’est pas réglée, vérifier 1 par 1 les informations ci-dessous : 
+
+- Fichier de config 
+
+- Url des flux rss 
+
+- Bonne installation des paquets 
+
+- Bon droit sur les fichiers 
+
+Si erreur persistante contacter moi --> ricardo.suprice@etu.univ-amu.fr je me ferais un plaisir de vous aider ! 
 
