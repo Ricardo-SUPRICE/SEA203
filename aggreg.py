@@ -234,7 +234,7 @@ def main():
             if sys.argv[1] == '-h' or sys.argv[1] == '--help':#si l'argument est -h ou --help
                 print(" Compléter le fichier de configuration --> '/etc/aggreg/aggreg.conf'")
                 print(" Puis lancer la commande './aggreg.py' \n")
-                print("(afficher fichier documentation aide sur le fichier(si grosse erreur verifier le fichier de configuration (lien,nom etc etc...)))\n")
+                print("Regerder le PDF sur le programme aggreg.py(open aggreg.py.pdf) ou/et lire le fihcier README.md pour plus d'information.  \n")
                 print(" -h, --help  \t Guide, aide pour conmprendre l'outils. A LIRE !!")
                 print("(ou lire mon gitlab  --->  https://etulab.univ-amu.fr/s23001073/sae-203)")
             else:
