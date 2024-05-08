@@ -167,7 +167,9 @@ p{
                    
       <i><p class="date_gene">""")
         html.write(str(date))
-        for i in liste_evenements:#pour chaque dictio contenant information sur son flux rss
+        for i in reversed(liste_evenements):#pour chaque dictio contenant information sur son flux rss, 
+            #comme on affiche d'abord le 1er element et ensuit on ajoute au dessus (dans la page web) on doit parourir la liste a l'enver pour que le denier élément soit en bas et le premier en haut
+            #donc on utilise reversed()
             html.write("""</p></i>
         <!-- liste des événements (items du flux RSS). Un bloc <article> par item dans le flux -->
         <article class="flux_rss">
@@ -252,12 +254,18 @@ def main():
                     print(" Error : Fichier introuvable")
                     print( " >>",sys.argv[1],"<<")
                 except yaml.scanner.ScannerError:#si c'est pas un fichier yaml en argument
+                    print(" Error : yaml.scanner.ScannerError")
                     print(" Error: Ceci n'est PAS un fichier de config au format yaml")
                 except IsADirectoryError:#quand l'agument est un repertoire
                     print(" Error : Ceci est un répertoire")
+                except TypeError:
+                    print("Error : TypeError")
+                    print("Error : Sois fichier config mal compléter,sois fichier config pas bon")
+                    
         except IndexError: #si y'en a pas
             print("Error: fichier config inexistant --> '/etc/aggreg/aggreg.conf' ")
-            print("Error : Aucun fichier mis en argument pour remplacé fichier config")
+            print("Error : Aucun fichier mis en argument pour remplacé fichier config\n")
+            print("'./aggreg.py -h' or './aggreg.py --help' pour plus d'information")
 
     
  
