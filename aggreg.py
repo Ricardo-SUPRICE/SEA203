@@ -13,6 +13,8 @@ from requests.exceptions import MissingSchema
 import datetime  #https://docs.python.org/fr/3.6/library/datetime.html 
 #https://rtavenar.github.io/poly_python/content/dates.html
 #https://docs.python.org/3.5/library/datetime.html#strftime-and-strptime-behavior 
+
+
 import matplotlib.pyplot as plt
 import mpld3
 
@@ -95,6 +97,9 @@ def fusion_flux(liste_url, liste_flux, tri_chrono):
                 
             return liste_fin_fin  #place ici comme si si c'est y'a none sa prend pas en compte donc return none          
 
+
+
+
 def graphe_ok():
     fig, ax1 = plt.subplots()
     ax1.set_ylabel("A")
@@ -112,6 +117,10 @@ def graphe_ok():
     #https://openclassrooms.com/forum/sujet/afficher-un-graphique-matplotlib-en-html#message-94731371
 
     return html_graph
+
+
+
+
 
 def genere_html(liste_evenements, chemin_html):
     """
@@ -224,6 +233,12 @@ p{
         </article>
     </body>
     </html>""")
+
+
+
+
+
+
             
     with open(chemin_html_graphe,'w')as graphe:
         graphe.write("""<!DOCTYPE html>
