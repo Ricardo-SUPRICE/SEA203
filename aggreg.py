@@ -15,8 +15,7 @@ import datetime  #https://docs.python.org/fr/3.6/library/datetime.html
 #https://docs.python.org/3.5/library/datetime.html#strftime-and-strptime-behavior 
 
 
-import matplotlib.pyplot as plt
-import mpld3
+
 
 def charge_urls(liste_url):
     """
@@ -99,36 +98,12 @@ def fusion_flux(liste_url, liste_flux, tri_chrono):
 
 
 
-
-def graphe_ok():
-    fig, ax1 = plt.subplots()
-    ax1.set_ylabel("A")
-    ax1.set_xlabel("B")
-    ax1.plot([1,2,4,5], [0,3,4,5], "blue")
-    ax2 = ax1.twinx() # Créer une autre axe y
-    ax2.set_ylabel("C")
-    ax2.set_xlabel("B")
-    ax2.plot([1,2,4,5], [0,2,3,6], "green")
-    fig.set_size_inches(7,5)
-    fig.set_dpi(100)
-    
-    #CHERCHER >>>fig<<< c'est quoi ????
-    html_graph = mpld3.fig_to_html(fig) #convertit le graphe matplot en html
-    #https://openclassrooms.com/forum/sujet/afficher-un-graphique-matplotlib-en-html#message-94731371
-
-    return html_graph
-
-
-
-
-
 def genere_html(liste_evenements, chemin_html):
     """
     genere un fichier html avec son css, cette page a les infos des flux_rss
     """
     dossier_css = chemin_html + '/css/'
     chemin_css = chemin_html + '/css/feed.css'
-    chemin_html_graphe = chemin_html + '/graphe.html'
     chemin_html = chemin_html + '/index.html'
     
 
@@ -166,7 +141,7 @@ p{
         }
 .navbar a {
             float: right; 
-            margin: 0; 
+            margin: 10px; 
         }                                                       
 """)
     with open(chemin_html, "w")as html:#création fichier html
@@ -186,8 +161,9 @@ p{
     <header>
     <h1>Events log</h1>
     </header>
-    <a href=""")
-        html.write(chemin_html_graphe+""">Graphe</a>
+    <a href=#>Minor</a>
+    <a href=#>Major</a>
+    <a href=#>Critical</a>
     </div>
     <article>
       
@@ -234,30 +210,6 @@ p{
     </body>
     </html>""")
 
-
-
-
-
-
-            
-    with open(chemin_html_graphe,'w')as graphe:
-        graphe.write("""<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Events log</title>
-    <link rel="stylesheet" href="css/feed.css" type="text/css"/>
-  </head>
-  <body>
-    
-    <div class="navbar">
-    <header>
-    <h1>Graphe</h1>
-    </header>   </div>""")
-        graphe.write(graphe_ok())
-        graphe.write("""</body>
-    </html>""")
             
     return   #return 2 fichier (avec 1rep si non existe) 1 fichier html et 1 fichier css
 
@@ -313,7 +265,7 @@ def main():
                     print(" Error : Ceci est un répertoire")
                 except TypeError:
                     print("Error : TypeError")
-                    print("Error : Sois fichier config mal compléter,sois fichier config pas bon")
+                    print("Error : Sois fichier config mal compléter,fichier config pas bon/sois URL indisponible dans fichier de config")
                     
         except IndexError: #si y'en a pas
             print("Error: fichier config inexistant --> '/etc/aggreg/aggreg.conf' ")
