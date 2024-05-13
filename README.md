@@ -34,8 +34,6 @@ apt-get install python3
 apt install python3-pip
 pip3 install PyYAML
 pip3 install feedparser
-pip3 install matplotlib 
-pip3 install mpld3
 ```
 
 Crée un fichier de config dans /etc :
