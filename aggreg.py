@@ -265,7 +265,7 @@ def main():
                     print(" Error : Ceci est un répertoire")
                 except TypeError:
                     print("Error : TypeError")
-                    print("Error : Sois fichier config mal compléter,fichier config pas bon/sois URL indisponible dans fichier de config")
+                    print("Error : Sois fichier config mal compléter(fichier config pas bon)/ sois URL indisponible dans fichier de config / sois serveur injoignable")
                     
         except IndexError: #si y'en a pas
             print("Error: fichier config inexistant --> '/etc/aggreg/aggreg.conf' ")
