@@ -6,6 +6,7 @@
 #rss-name: rss.xml --> nom du fichier 
 
 #destination: /var/www/superviseur/index.html --> destinantion pour la création de la page web
+#crée un repertoire contenant la page html et le repertoire css
 
 #tri-chrono: true --> pour trier:True = evenement les plus récent et False = evenement les plus critique
 
