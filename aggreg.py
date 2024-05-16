@@ -19,7 +19,7 @@ import datetime  #https://docs.python.org/fr/3.6/library/datetime.html
 
 def charge_urls(liste_url):
     """
-    A ecrire
+    Récuper les flux rss des url données, les charges et les mets dans une liste de dictionnaire 
     """
     news_feed = []
     for url in liste_url:
@@ -94,7 +94,7 @@ def fusion_flux(liste_url, liste_flux, tri_chrono):
                         if evenement == "CRITICAL" and t == 2:# ajoute a la liste final tout les evenement critical, quand le tour(t) vaut 2
                             liste_fin_fin.append(j)
                 
-    return liste_fin_fin  #place ici comme si si c'est y'a none sa prend pas en compte donc return none          
+            return liste_fin_fin  #place ici comme si si c'est y'a none sa prend pas en compte donc return none          
 
 
 
@@ -142,7 +142,16 @@ p{
 .navbar a {
             float: right; 
             margin: 10px; 
-        }                                                       
+        }   
+.minor{
+       color:green;
+       }  
+.major{
+       color:orange;
+       }
+.critical{
+       color:red;
+       }                                                  
 """)
     with open(chemin_html, "w")as html:#création fichier html
         date = datetime.datetime.now() #la date actuelle
@@ -185,7 +194,13 @@ p{
             html.write(i["date_publi"])
             html.write("""</p>
             <p>catégorie: """)
-            html.write(i["categorie"])
+            if i["categorie"] =="MINOR":
+                html.write(f""" <span class='minor'>{i['categorie']}</span>""")
+            if i["categorie"] =="MAJOR":
+                html.write(f""" <span class='major'>{i['categorie']}</span>""")
+            if i["categorie"] =="CRITICAL":
+                html.write(f""" <span class='critical'>{i['categorie']}</span>""")
+                
             html.write("""</p>
             <p>giud: """)
             lien_split = i["lien"].split("/")#pour avoir le guid car il est dans le lien

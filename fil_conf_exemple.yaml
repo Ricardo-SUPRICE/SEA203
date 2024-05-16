@@ -11,7 +11,7 @@
 #tri-chrono: true --> pour trier:True = evenement les plus récent et False = evenement les plus critique
 
 sources:
-  - http://serveur1/rss.xml
+  - http://192.168.122.10/rss.xml
 rss-name: rss_flux
-destination: /home/ricardo/sae-203
+destination: /amuhome/s23001073/sae-203/index.xml
 tri-chrono: True 
