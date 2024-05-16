@@ -161,9 +161,6 @@ p{
     <header>
     <h1>Events log</h1>
     </header>
-    <a href=#>Minor</a>
-    <a href=#>Major</a>
-    <a href=#>Critical</a>
     </div>
     <article>
       
