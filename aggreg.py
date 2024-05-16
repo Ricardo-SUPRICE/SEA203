@@ -144,7 +144,7 @@ p{
             margin: 10px; 
         }   
 .minor{
-       color:green;
+       color:yellow;
        }  
 .major{
        color:orange;
