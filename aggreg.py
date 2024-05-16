@@ -94,7 +94,7 @@ def fusion_flux(liste_url, liste_flux, tri_chrono):
                         if evenement == "CRITICAL" and t == 2:# ajoute a la liste final tout les evenement critical, quand le tour(t) vaut 2
                             liste_fin_fin.append(j)
                 
-            return liste_fin_fin  #place ici comme si si c'est y'a none sa prend pas en compte donc return none          
+    return liste_fin_fin  #place ici comme si si c'est y'a none sa prend pas en compte donc return none          
 
 
 
