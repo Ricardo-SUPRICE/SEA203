@@ -6,7 +6,7 @@
 
 Dans le cadre d'un project scolaire, j'ai crée :
 
--5 machine vituel dans le même reseau 
+- 5 machine vituel dans le même reseau 
 
     - 3 serveur qui génère des flux_rss 
     - 1 aggregateur 
