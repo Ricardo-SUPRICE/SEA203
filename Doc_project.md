@@ -17,13 +17,26 @@ Dans le cadre d'un project scolaire, j'ai crée :
         - Pour pouvoir voir la page html
 ## Installation
 
-Récuperé les programme via gitlab:
 
-```
-apt insall git
-git clone https://etulab.univ-amu.fr/s23001073/sae-203.git
-ls sae-203
-```
+Premièrement crée l'infrastructure :
+
+ Récuperation des machines virtuelles(celle du prof) et installation de certain paquets :
+    - SSH
+    - APACHE
+    - PIP (python3-pip)
+ Changement des adresse IP et masque
+ ```
+ sudo nano /etc/netwok/interfaces
+ ```
+
+
+
+
+
+
+
+
+
 ou récupérer le fichier comprésser 
 
 
