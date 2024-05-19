@@ -21,9 +21,9 @@ Dans le cadre d'un project scolaire, j'ai crée :
 Premièrement crée l'infrastructure :
 
 Récuperation des machines virtuelles(celles du prof) et installation de certain paquets :
-        - SSH
-    - APACHE
-    - PIP (python3-pip)
+ - SSH
+ - APACHE
+ - PIP (python3-pip)
 Changement des adresse IP et masque
  ```
  sudo nano /etc/netwok/interfaces
