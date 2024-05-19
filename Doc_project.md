@@ -20,15 +20,15 @@ Dans le cadre d'un project scolaire, j'ai crée :
 
 Premièrement crée l'infrastructure :
 
- Récuperation des machines virtuelles(celles du prof) et installation de certain paquets :
+Récuperation des machines virtuelles(celles du prof) et installation de certain paquets :
     - SSH
     - APACHE
     - PIP (python3-pip)
- Changement des adresse IP et masque
+Changement des adresse IP et masque
  ```
  sudo nano /etc/netwok/interfaces
  ```
- Pour les 3 serveurs, suivre les étapes dans le site du prof (https://eric-wurbel.pedaweb.univ-amu.fr/extranet/Enseignement/SAE203/environnement-de-test.html) pour pouvoir générée les fluc_rss et les affichier (Apache).
+Pour les 3 serveurs, suivre les étapes dans le site du prof (https://eric-wurbel.pedaweb.univ-amu.fr/extranet/Enseignement/SAE203/environnement-de-test.html) pour pouvoir générée les fluc_rss et les affichier (Apache).
  
 
 
