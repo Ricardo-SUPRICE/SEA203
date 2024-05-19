@@ -29,6 +29,7 @@ Changement des adresse IP et masque
  sudo nano /etc/netwok/interfaces
  ```
 Pour les 3 machines virtuelles qui serviront de serveurs, suivre les étapes dans le site du prof (https://eric-wurbel.pedaweb.univ-amu.fr/extranet/Enseignement/SAE203/environnement-de-test.html) pour pouvoir générée les fluc_rss et les affichier(Apache).
+
 De même, pour la machine virtuelle qui servira d'aggregateur suivre les étapes du prof sur son site et ensuite ajouter notre programme aggreg.py dans le répertoire courant du bon utilisateur(voir site prof) et **suivre guide du programme aggreg.py**.
 
  
