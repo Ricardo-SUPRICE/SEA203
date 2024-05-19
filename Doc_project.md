@@ -30,74 +30,14 @@ Changement des adresse IP et masque
  ```
 Pour les 3 machines virtuelles qui serviront de serveurs, suivre les étapes dans le site du prof (https://eric-wurbel.pedaweb.univ-amu.fr/extranet/Enseignement/SAE203/environnement-de-test.html) pour pouvoir générée les fluc_rss et les affichier(Apache).
 
-De même, pour la machine virtuelle qui servira d'aggregateur suivre les étapes du prof sur son site et ensuite ajouter notre programme aggreg.py dans le répertoire courant du bon utilisateur(voir site prof) et **suivre guide du programme aggreg.py**.
-
- 
+De même, pour la machine virtuelle qui servira d'aggregateur suivre les étapes du prof sur son site et ensuite ajouter notre programme aggreg.py dans le répertoire courant du bon utilisateur(voir site prof) et **suivre guide du programme aggreg.py IMPORTANT**.
 
 
+## Utilisation
 
+- Lancer toutes les machines.
+- Puis avec le client accéder à la page web de l'aggregateur via un navigateur web et l'adresse ip de la machine aggregateur.
 
-
-
-
-
-
-ou récupérer le fichier comprésser 
-
-
-## Paramétrage
-
-Tout d'abord téléchargé les packet yaml et feedparser: 
-```
-apt-get install python3
-apt install python3-pip
-pip3 install PyYAML
-pip3 install feedparser
-```
-
-Crée un fichier de config dans /etc :
-
-```
-sudo mkdir /etc/aggreg
-sudo touch /etc/aggreg/aggreg.conf
-```
-Sinon mettre un fichier de config en argument:
-```
-./aggreg.py <file_config>
-```
-
-Dans le fichier config ecrire:
-```
-#sources: --> source des page rss  
-#  - http://serveur1/rss.xml
-#  - http://server2/rss.xml
-#  - url
-#  - ...
-
-#rss-name: rss.xml --> nom du fichier 
-
-#destination: /var/www/superviseur/index.html --> destinantion pour la création de la page web
-
-#tri-chrono: true --> pour trier:True = evenement les plus récent et False = evenement les plus critique
-
-#Exemple:
-#sources:
-#  - #url
-#  - #url
-#rss-name: #file_name
-#destination: #path html
-#tri-chrono: #True or False
-
-```
-
-Une fois un fichier de config compléter lancer la commande:
-```
-./aggreg.py 
-
-ou si il n'y a pas de de fichier dans /etc/aggreg/aggreg.conf
-
-./aggreg.py <file_config>
-```
 
 ## Problèmes survenus ? 
     
