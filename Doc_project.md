@@ -41,17 +41,15 @@ De même, pour la machine virtuelle qui servira d'aggregateur suivre les étapes
 
 ## Problèmes survenus ? 
     
-Si un problème survient quand la commande est lancée, lire l’erreur et faire ce qu’il y a marqué dans l’erreur. 
+Si un problème survient vérifier :
 
-Si ce n’est pas réglée, vérifier 1 par 1 les informations ci-dessous : 
+- Ip des machines
 
-- Fichier de config 
+- Service Apache actif sur les serveur et l'aggregateur 
 
-- Url des flux rss 
+- Voir guide du programme aggreg.py 
 
-- Bonne installation des paquets 
-
-- Bon droit sur les fichiers 
+- Bonne config des serveurs(revoir site du prof)
 
 Si erreur persistante contacter moi --> ricardo.suprice@etu.univ-amu.fr je me ferais un plaisir de vous aider ! 
 
