@@ -21,7 +21,7 @@ Dans le cadre d'un project scolaire, j'ai crée :
 Premièrement crée l'infrastructure :
 
 Récuperation des machines virtuelles(celles du prof) et installation de certain paquets :
-    - SSH
+        - SSH
     - APACHE
     - PIP (python3-pip)
 Changement des adresse IP et masque
