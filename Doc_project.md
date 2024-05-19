@@ -10,17 +10,17 @@ Dans le cadre d'un project scolaire, j'ai crée :
 
     - 3 serveur qui génère des flux_rss 
     - 1 aggregateur 
-        - Qui lis les flux_rss grace au URL (http://serveur1/rss.xml)
+        - Qui lis les flux_rss grace a leurs URL (http://serveur1/rss.xml)
         - Prend les information importante de ce flux
         - Affiche les informations dans un fichier html avec son css
     - 1 client
-        - Pour pouvoir voir la page html
+        - Pour pouvoir voir la page html générée
 ## Installation
 
 
 Premièrement crée l'infrastructure :
 
- Récuperation des machines virtuelles(celle du prof) et installation de certain paquets :
+ Récuperation des machines virtuelles(celles du prof) et installation de certain paquets :
     - SSH
     - APACHE
     - PIP (python3-pip)
@@ -28,6 +28,8 @@ Premièrement crée l'infrastructure :
  ```
  sudo nano /etc/netwok/interfaces
  ```
+ Pour les 3 serveurs, suivre les étapes dans le site du prof (https://eric-wurbel.pedaweb.univ-amu.fr/extranet/Enseignement/SAE203/environnement-de-test.html) pour pouvoir générée les fluc_rss et les affichier (Apache).
+ 
 
 
 
