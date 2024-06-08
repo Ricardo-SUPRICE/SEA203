@@ -3,8 +3,6 @@
 import yaml
 import sys #voir tp7 r107
 import os
-from pathlib import Path, PosixPath # pathlib permet de manipuler des chemins du système de fichiers de façon très pratique.
-import xml.etree.ElementTree as ET
 import feedparser
 import requests
 from requests.exceptions import HTTPError
@@ -110,7 +108,8 @@ def genere_html(liste_evenements, chemin_html):
     
     dossier_css = dossier_travail + '/css/'
     chemin_css = dossier_travail + '/css/feed.css'
-    #chemin_html = chemin_html + '/index.html'
+    chemin_js = dossier_travail + '/script.js'
+   
     
 
     try: 
@@ -120,45 +119,112 @@ def genere_html(liste_evenements, chemin_html):
     
     with open(chemin_css, "w")as css:#création fichier css
         css.write("""
-*{
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    padding: 20px;
 }
-.flux_rss{
-    width:90%;
-    margin:auto;
-    border-left:1px;
-} 
-.date_gene{
-    margin-left:10px;
-} 
-p{
-    padding:10px;
-}  
-.navbar {
-    background-color: #333; 
-    padding:30px; 
-    overflow: hidden;
-}      
-.navbar h1 {
-            float: left; 
-            margin: 0; 
-        }
-.navbar a {
-            float: right; 
-            margin: 10px; 
-        }   
-.minor{
+
+.event {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.event h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+    display: flex;
+   justify-content: space-between;
+   align-items: center;
+    
+}
+
+.event-details,
+.event-description {
+    display: none;
+}
+
+.event-details p {
+    margin: 5px 0;
+}
+
+.event-details strong {
+    color: #555;
+}
+
+.event-details .critical {
+    color: #d9534f;
+    font-weight: bold;
+}
+.event-details .minor{
        color:yellow;
+       font-weight: bold;
        }  
-.major{
+.event-details .major{
        color:orange;
+       font-weight: bold;
        }
-.critical{
-       color:red;
-       }                                                  
+
+.event-description {
+    margin-top: 15px;
+    color: #666;
+    line-height: 1.6;
+}
+
+.event a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.event a:hover {
+    text-decoration: underline;
+}
+
+.toggle-details:hover {
+    
+    cursor: pointer;
+    font-size: 22px;
+}
+
+.toggle-details .petite_info{
+    margin-left: auto;
+    font-style: italic;
+    font-size: 15px;
+    color: blue;
+}                                               
 """)
+    
+    with open(chemin_js,'w')as js:
+        js.write(""" document.addEventListener('DOMContentLoaded', function() {
+    var toggleHeaders = document.querySelectorAll('.toggle-details');
+
+    toggleHeaders.forEach(function(header) {
+        header.addEventListener('click', function() {
+            var eventDetails = this.nextElementSibling;
+            var eventDescription = eventDetails.nextElementSibling;
+            
+            if (eventDetails.style.display === 'none' || eventDetails.style.display === '') {
+                eventDetails.style.display = 'block';
+                eventDescription.style.display = 'block';
+            } else {
+                eventDetails.style.display = 'none';
+                eventDescription.style.display = 'none';
+            }
+        });
+    });
+});
+
+
+""")
+        
+
     with open(chemin_html, "w")as html:#création fichier html
         date = datetime.datetime.now() #la date actuelle
         date = str(date.day) +'/'+ str(date.month) +'/'+ str(date.year) +' '+ str(date.hour)+':'+str(date.minute) #pour avoir l'écriture que je veux
@@ -188,11 +254,19 @@ p{
             html.write("""</p></i>
         <!-- liste des événements (items du flux RSS). Un bloc <article> par item dans le flux -->
         <article class="flux_rss">
-            <header>
-            <u><h2> """)
+            <div class="event">
+            <h3 class="toggle-details">
+            """)
             html.write(str(i["title"]))
-            html.write("""</h2></u>
-            </header>
+            if i["categorie"] =="MINOR":
+                html.write(f""" <div class='petite_info'><span class='minor'>{i['categorie']}</span> {i["date_publi"]}</div>""")
+            if i["categorie"] =="MAJOR":
+                html.write(f""" <div class='petite_info'><span class='major'>{i['categorie']}</span> {i["date_publi"]}</div>""")
+            if i["categorie"] =="CRITICAL":
+                html.write(f""" <div class='petite_info'><span class='critical'>{i['categorie']}</span> {i["date_publi"]}</div>""")   
+            html.write(""" </h3>
+            
+            <div class="event-details">
             <p>from: """) 
             html.write(i["serveur"])
             html.write("""</p>
@@ -219,14 +293,17 @@ p{
             html.write('''">''')
             html.write(i["lien"])
             html.write("""</a></p>
-
-            <p>""")
+            </div>
+            <p class="event-description">""")
             html.write(i["description"])
             html.write("""</p>
         </article>
-        </article>
-    </body>
-    </html>""")
+        </div>
+        """)
+        html.write("""</article>
+<script src="script.js"></script>
+</body>
+</html>""")
 
             
     return   #return 2 fichier (avec 1rep si non existe) 1 fichier html et 1 fichier css
