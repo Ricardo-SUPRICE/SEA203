@@ -98,7 +98,7 @@ def fusion_flux(liste_url, liste_flux, tri_chrono):
 
 def genere_html(liste_evenements, chemin_html):
     """
-    genere un fichier html avec son css(un repertoire), cette page a les infos des flux_rss
+    genere un fichier html avec son css(un repertoire) et son js, cette page a les infos des flux_rss
     """
     
     dossier_travail = chemin_html.split("/")
@@ -306,7 +306,7 @@ body {
 </html>""")
 
             
-    return   #return 2 fichier (avec 1rep si non existe) 1 fichier html et 1 fichier css
+    return   #return 3 fichier (avec 1rep si non existe) 1 fichier html , 1 fichier css et 1 fichier js
 
 
 
