@@ -1,17 +1,17 @@
-#sources: --> source des page rss  
-#  - http://serveur1/rss.xml
-#  - http://server2/rss.xml
+#sources: --> lien des serveur  
+#  - http://serveur1/
+#  - http://server2/
 #  - url
 #  - ...
-#rss-name: rss.xml --> nom du fichier 
+#rss-name: rss.xml --> nom de la page ou le flux rss est représenter dans les serveur 
 
 #destination: /var/www/superviseur/index.html --> destinantion pour la création de la page web
-#crée un repertoire contenant la page html et le repertoire css
+#crée dans le repertoire(ici superviseur) la page html et le repertoire css
 
 #tri-chrono: true --> pour trier:True = evenement les plus récent et False = evenement les plus critique
 
 sources:
-  - http://192.168.122.10/rss.xml
-rss-name: rss_flux
-destination: /amuhome/s23001073/sae-203/index.xml
-tri-chrono: True 
+  - http://192.168.122.10
+rss-name: rss.xml
+destination: /amuhome/s23001073/sae-203/index.html
+tri-chrono: False 
